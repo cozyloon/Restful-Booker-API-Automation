@@ -4,7 +4,5 @@ public class RequestComponents {
     public static final String AUTH_BASE_PATH = "/auth";
     public static final String BOOKING_BASE_PATH = "/booking";
     public static final String PING_BASE_PATH = "/ping";
-    public static final String CONTENT_TYPE = "Content-Type";
-    public static final String APPLICATION_JSON = "application/json";
-    public static final String BOOK_ID = "4587";
+    public static final String BOOK_ID = "/4587";
 }

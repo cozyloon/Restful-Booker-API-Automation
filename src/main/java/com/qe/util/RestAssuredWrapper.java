@@ -4,10 +4,15 @@ package com.qe.util;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+import java.io.File;
+import java.util.Map;
+
 import static com.qe.common.Constants.BASE_URL;
+import static com.qe.common.Constants.FILE_PATH;
 
 public class RestAssuredWrapper {
     private RequestSpecification requestSpec;
@@ -21,12 +26,12 @@ public class RestAssuredWrapper {
                 .build();
     }
 
-    public void setHeader(String name, String value) {
-        requestSpec = requestSpec.header(name, value);
+    public void setHeader(Map<String, ?> header) {
+        requestSpec = requestSpec.headers(header);
     }
 
-    public void setQueryParam(String name, String value) {
-        requestSpec = requestSpec.queryParam(name, value);
+    public void setQueryParam(Map<String, ?> queryParam) {
+        requestSpec = requestSpec.queryParams(queryParam);
     }
 
     public void setBody(Object body) {
@@ -38,6 +43,7 @@ public class RestAssuredWrapper {
                 .when()
                 .get(path)
                 .then()
+                //  .statusCode(200)
                 .extract()
                 .response();
     }
@@ -47,6 +53,7 @@ public class RestAssuredWrapper {
                 .when()
                 .post(path)
                 .then()
+                //   .statusCode(200)
                 .extract()
                 .response();
     }
@@ -65,8 +72,21 @@ public class RestAssuredWrapper {
                 .when()
                 .delete(path)
                 .then()
+                //.statusCode(200)
                 .extract()
                 .response();
+    }
+
+    public void validateJsonSchema(String path) {
+        File file = new File(FILE_PATH + "getBookingSchema.json");
+
+        RestAssured.given(requestSpec)
+                .when()
+                .get(path)
+                .then()
+                .statusCode(200)
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(file));
     }
 }
 

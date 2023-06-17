@@ -15,4 +15,10 @@ public class FunctionBase {
         headers.put(CONTENT_TYPE, APPLICATION_JSON);
         return headers;
     }
+
+    public static Map<String, String> getRequestQueryParams() {
+        HashMap<String, String> queryParams = new HashMap<>();
+        queryParams.put("", "");
+        return queryParams;
+    }
 }

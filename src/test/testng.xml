@@ -3,9 +3,12 @@
 <suite name="restfulBooker" verbose="1" thread-count="1">
     <listeners>
         <listener class-name="com.qe.listeners.RetryListener"/>
-        <listener class-name="com.qe.listeners.LoggingTestNGListener"/>
+<!--        <listener class-name="com.qe.listeners.LoggingTestNGListener"/>-->
     </listeners>
-    <test name="G:/restful-booker-API-Automation">
-        <classes/>
+
+    <test name="Restful-booker-API-Automation" parallel="classes" thread-count="10">
+        <packages>
+            <package name="com.qe.tests.*"></package>
+        </packages>
     </test>
 </suite>
