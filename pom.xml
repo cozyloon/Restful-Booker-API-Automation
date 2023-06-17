@@ -9,6 +9,15 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <testng.version>6.14.3</testng.version>
+        <rest-assured.version>5.3.0</rest-assured.version>
+        <lombok.version>1.18.26</lombok.version>
+        <jackson-databind.version>2.15.0</jackson-databind.version>
+        <json-schema-validator.version>5.3.0</json-schema-validator.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <ezconfig.version>1.1</ezconfig.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <data-faker.version>1.8.0</data-faker.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
@@ -18,7 +27,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M6</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
                     <suiteXmlFiles>
@@ -33,30 +42,28 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.15.0</version>
+            <version>${jackson-databind.version}</version>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.3.0</version>
-            <scope>provided</scope>
+            <version>${rest-assured.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>provided</scope>
+            <version>${testng.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.cozyloon</groupId>
             <artifactId>ezconfig</artifactId>
-            <version>1.1</version>
+            <version>${ezconfig.version}</version>
         </dependency>
         <dependency>
             <groupId>com.guicedee.services</groupId>
@@ -66,17 +73,22 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
-            <version>5.3.1</version>
+            <version>${json-schema-validator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>8.0.33</version>
+        </dependency>
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>${data-faker.version}</version>
         </dependency>
     </dependencies>
 </project>
