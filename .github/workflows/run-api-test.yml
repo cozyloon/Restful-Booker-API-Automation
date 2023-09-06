@@ -42,7 +42,7 @@ jobs:
       - name: execute-api-tests-workflow-dispatch
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
-          mvn clean test -Dsuite=testng.xml -Dgroups="${{ inputs.test-tags-to-include }}" -Denvironment=${{ inputs.environment }}
+          mvn clean test -Dsuite=testng -Dgroups="${{ inputs.test-tags-to-include }}" -Denvironment=${{ inputs.environment }}
 
       - name: execute-api-tests-pull-request
         if: ${{ github.event_name == 'pull_request' }}
